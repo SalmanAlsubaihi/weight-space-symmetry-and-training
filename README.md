@@ -15,14 +15,16 @@ $$\underset{a,b}{min} \; (a \cdot b \cdot x - 2)^2$$
 
 starting from two symmetrical points $(a,b) = (3,3), (1, 9)$ and using different learning rates. The minimizer for this loss function is clearly all points satisfing $a \cdot b = 2$. We can see that the two symmetrical points result in totally different behaviour. The optimization for the initial point $(a,b) = (1, 9)$ is less stable for the learning rate $0.02$ and diverges for the learning rate $0.025$.
 
+##### Learning Rate = 0.01
+
 <div align="center">
 <img width="500px" alt="regression_all" src="animations/animation_gif_lr_0.01.gif">
 </div>
-
+##### Learning Rate = 0.02
 <div align="center">
 <img width="500px" alt="regression_all" src="animations/animation_gif_lr_0.02.gif">
 </div>
-
+##### Learning Rate = 0.025
 <div align="center">
 <img width="500px" alt="regression_all" src="animations/animation_gif_lr_0.025.gif">
 </div>
