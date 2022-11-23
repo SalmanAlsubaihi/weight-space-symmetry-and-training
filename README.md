@@ -1,4 +1,4 @@
-# effect-of-weight-space-symmetry-on-training
+# The Effect of Weight-Space Symmetry on Training DNNs
 
 ### About
 This repository studies the effect of the weight-space symmetry property in Deep Neural Networks on training. It is relatively well-known that DNNs (depending on the used activation function) have many symmetrical points in their weight space (weights that produce the same mapping). This property of DNNs is explained in Bishop's book "Pattern Recognition and Machine Learning". Although symmetrical points produce exact functional mapping, a single gradient update on two symmetrical points leads to different (unsymmetrical) points. Here we analyze the effect of weight-space symmetry in DNNs with ReLU activations, where a given DNN has infinite equivalents.
