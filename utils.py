@@ -10,52 +10,6 @@ from torchvision import transforms
 from torch.nn.utils import clip_grad_norm_
 
 
-class Sequential_modified(nn.Sequential):
-    def __init__(self, architecture, seed):
-        self.seed = seed
-        self.architecture = architecture
-        torch.manual_seed(self.seed)
-        self.architecture = architecture
-        layer_sizes = list(zip(architecture[:-1],architecture[1:]))
-        layer_list = []
-        for size in layer_sizes[:-1]:
-            layer_list.append(nn.Linear(*size))
-            layer_list.append(nn.ReLU())
-        layer_list.append(nn.Linear(*layer_sizes[-1]))
-        super().__init__(*layer_list)
-
-class Sequential_modified_2(nn.Sequential):
-    def __init__(self, architecture, seed):
-        self.seed = seed
-        self.architecture = architecture
-        torch.manual_seed(self.seed)
-        self.architecture = architecture
-        layer_sizes = list(zip(architecture[:-1],architecture[1:]))
-        layer_list = []
-        for size in layer_sizes[:-1]:
-            layer_list.append(nn.Linear(*size))
-            layer_list.append(nn.ReLU())
-        layer_list.append(nn.Linear(*layer_sizes[-1]))
-        super().__init__(*layer_list)
-
-    def forward(self, input_):
-        for layer in self:
-            if isinstance(layer, nn.ReLU):
-                in_shape = input_.shape[1]
-                random_vector = torch.rand(in_shape)
-                diag_mat = torch.diag(random_vector)
-                diag_mat_inv = torch.diag(1/random_vector)
-                input_ = torch.matmul(input_, diag_mat)
-                input_ = layer(input_)
-                input_ = torch.matmul(input_, diag_mat_inv)
-            else:
-                input_ = layer(input_)
-        return input_
-
-
-    # def jump_to_symmetrical_point(self, symmetrical_point_generator):
-
-        
 def generate_numbers_mul_to_1(num, range_):
     torch.manual_seed(random.randint(0,10000))
     rand_numbers = (range_[1]-range_[0]) * torch.rand(num) + range_[0]
@@ -161,18 +115,6 @@ def multiply_list_of_num(list_):
         multiplication *= num
     return multiplication
 
-# def clone_net(old_net):
-#     new_layers = []
-#     for old_layer in old_net:
-#         if isinstance(old_layer, nn.Linear):
-#             new_layer = nn.Linear(*(old_layer.weight.shape[::-1]))
-#             new_layer.weight.data = torch.tensor(old_layer.weight.data.tolist().copy()).to('cuda:0')
-#             new_layer.bias.data = torch.tensor(old_layer.bias.data.tolist().copy()).to('cuda:0')
-#         if isinstance(old_layer, nn.ReLU):
-#             new_layer = nn.ReLU()
-#         new_layers.append(new_layer)
-#     new_net = nn.Sequential(*new_layers)
-#     return new_net
 
 def module_at_stationary_point_1(iter_loss, iter_interval=100, percentage=1):
     if len(iter_loss) > iter_interval:

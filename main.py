@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import time
 import random
 from utils import *
+from models import *
 from torch.utils.tensorboard import SummaryWriter
 import itertools
 import shutil
