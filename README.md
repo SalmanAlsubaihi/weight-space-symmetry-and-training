@@ -20,10 +20,12 @@ starting from two symmetrical points $(a,b) = (3,3), (1, 9)$ and using different
 <div align="center">
 <img width="500px" alt="regression_all" src="animations/animation_gif_lr_0.01.gif">
 </div>
+
 ##### Learning Rate = 0.02
 <div align="center">
 <img width="500px" alt="regression_all" src="animations/animation_gif_lr_0.02.gif">
 </div>
+
 ##### Learning Rate = 0.025
 <div align="center">
 <img width="500px" alt="regression_all" src="animations/animation_gif_lr_0.025.gif">
