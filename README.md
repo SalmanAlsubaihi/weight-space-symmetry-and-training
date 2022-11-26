@@ -11,7 +11,7 @@ $$f(x) = a \cdot b \cdot x$$
 
 Note that the two points $(a,b) = (3,3), (1, 9)$ are symmetrical as they lead to the same mapping $f(x) = 9\cdot x$. The following figures show how the optimization progress when minimizing the loss 
 
-$$\underset{a,b}{min} \; (a \cdot b \cdot x - 2)^2$$
+$$`\underset{a,b}{min} \; (a \cdot b \cdot x - 2)^2`$$
 
 starting from two symmetrical points $(a,b) = (3,3), (1, 9)$ and using different learning rates. The minimizer for this loss function is clearly all points satisfying $a \cdot b = 2$. We can see that the two symmetrical points result in totally different behavior. The optimization for the initial point $(a,b) = (1, 9)$ is less stable for the learning rate $0.02$ and diverges for the learning rate $0.025$.
 
